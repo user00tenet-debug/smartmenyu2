@@ -558,41 +558,52 @@ async function fetchAnalytics(range, from, to) {
 // ==========================================
 
 function renderDashboard(data) {
-    // Update summary cards
-    document.getElementById('totalOrders').textContent = data.summary.totalOrders;
-    document.getElementById('totalPaymentAmount').textContent = '₹' + data.summary.totalOrderAmount.toLocaleString('en-IN');
+    // 1. Split orders into regular and waiter invoices immediately
+    const invoices = data.orders.filter(o => o.tableNumber === 'Waiter-Generated');
+    const regularOrders = data.orders.filter(o => o.tableNumber !== 'Waiter-Generated');
 
-    // Update paid/unpaid/ignored amounts if elements exist
+    // 2. Calculate summary specifically for regular orders (to exclude invoices from top cards)
+    const regularPaidAmount = regularOrders
+        .filter(o => o.paymentStatus === 'paid')
+        .reduce((sum, o) => sum + o.totalPrice, 0);
+    const regularUnpaidAmount = regularOrders
+        .filter(o => o.paymentStatus === 'unpaid')
+        .reduce((sum, o) => sum + o.totalPrice, 0);
+    const regularIgnoredAmount = regularOrders
+        .filter(o => o.paymentStatus === 'ignore')
+        .reduce((sum, o) => sum + o.totalPrice, 0);
+
+    // 3. Update top summary cards (reflecting only the Orders tab now)
+    document.getElementById('totalOrders').textContent = regularOrders.length;
+    document.getElementById('totalPaymentAmount').textContent = '₹' + regularPaidAmount.toLocaleString('en-IN');
+
+    // 4. Update secondary amount elements if they exist (maintained for consistency)
     const paidAmtEl = document.getElementById('paidOrderAmount');
     const unpaidAmtEl = document.getElementById('unpaidOrderAmount');
     const ignoredAmtEl = document.getElementById('ignoredOrderAmount');
-    if (paidAmtEl) paidAmtEl.textContent = '₹' + data.summary.totalOrderAmount.toLocaleString('en-IN');
-    if (unpaidAmtEl) unpaidAmtEl.textContent = '₹' + (data.summary.unpaidAmount || 0).toLocaleString('en-IN');
-    if (ignoredAmtEl) ignoredAmtEl.textContent = '₹' + (data.summary.ignoredAmount || 0).toLocaleString('en-IN');
+    if (paidAmtEl) paidAmtEl.textContent = '₹' + regularPaidAmount.toLocaleString('en-IN');
+    if (unpaidAmtEl) unpaidAmtEl.textContent = '₹' + regularUnpaidAmount.toLocaleString('en-IN');
+    if (ignoredAmtEl) ignoredAmtEl.textContent = '₹' + regularIgnoredAmount.toLocaleString('en-IN');
 
-    // Check if there's any data
+    // 5. Check if there's any data to display in tables
     if (data.orders.length === 0) {
         showEmpty();
         return;
     }
 
-    // Split orders into regular and waiter invoices
-    const invoices = data.orders.filter(o => o.tableNumber === 'Waiter-Generated');
-    const regularOrders = data.orders.filter(o => o.tableNumber !== 'Waiter-Generated');
-
-    // Update counts on tab buttons
+    // 6. Update counts on tab buttons
     document.getElementById('ordersCount').textContent = regularOrders.length;
     document.getElementById('invoicesCount').textContent = invoices.length;
 
-    // Render orders table, invoices table, and items analytics
+    // 7. Render orders table, invoices table, and items analytics
     renderOrdersTable(regularOrders);
     renderInvoicesTable(invoices);
     renderItemsAnalytics(regularOrders); // Only show items from regular guest orders
 
-    // Show the tabs section, default to orders tab
+    // 8. Show the tabs section, default to orders tab
     document.getElementById('dataTabsSection').style.display = 'block';
     
-    // Maintain active tab if possible, otherwise default
+    // 9. Maintain active tab if possible, otherwise default
     const activeTab = document.querySelector('.data-tab.active')?.dataset.tab || 'orders';
     switchDataTab(activeTab);
 }
