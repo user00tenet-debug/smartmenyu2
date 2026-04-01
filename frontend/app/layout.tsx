@@ -26,11 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${roboto.variable} font-sans antialiased bg-alabaster text-softblack`}>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.NEXT_PUBLIC_API_URL = "${process.env.NEXT_PUBLIC_API_URL || ''}";`,
-          }}
-        />
         {children}
       </body>
     </html>

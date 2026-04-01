@@ -5,7 +5,7 @@
 const restaurantConfig = {
     name: 'Paradise',
     slug: 'paradise',
-    apiBaseUrl: window.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
+    apiBaseUrl: ''
 };
 
 // ==========================================
