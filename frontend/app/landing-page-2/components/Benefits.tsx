@@ -81,7 +81,7 @@ export default function Benefits() {
                     {restaurantBenefits.map((b) => (
                         <div
                             key={b.title}
-                            className="advantage-card bg-white rounded-2xl border border-warm-200/60 p-6 hover:shadow-lg transition-shadow duration-300"
+                            className="advantage-card bg-white rounded-3xl border border-warm-200/60 p-6 hover:shadow-lg transition-shadow duration-300"
                         >
                             <span className="text-3xl block mb-3">{b.icon}</span>
                             <h3 className="font-bold font-heading text-warm-900 mb-1.5">
@@ -116,7 +116,7 @@ export default function Benefits() {
                     {customerBenefits.map((b) => (
                         <div
                             key={b.title}
-                            className="advantage-card bg-white rounded-2xl border border-warm-200/60 p-6 hover:shadow-lg transition-shadow duration-300"
+                            className="advantage-card bg-white rounded-3xl border border-warm-200/60 p-6 hover:shadow-lg transition-shadow duration-300"
                         >
                             <span className="text-3xl block mb-3">{b.icon}</span>
                             <h3 className="font-bold font-heading text-warm-900 mb-1.5">

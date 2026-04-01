@@ -52,7 +52,7 @@ export default function MenuShowcase() {
                     {menuItems.map((item) => (
                         <div
                             key={item.name}
-                            className="menu-card relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-warm-200/60 group"
+                            className="menu-card relative bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-warm-200/60 group"
                         >
                             {/* Image */}
                             <div className="relative h-48 sm:h-52 overflow-hidden">

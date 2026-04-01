@@ -53,10 +53,10 @@ export default function ImplementationProcess() {
                         <div key={step.num} className="relative group">
                             {/* Connector line (desktop) */}
                             {i < steps.length - 1 && (
-                                <div className="hidden lg:block absolute top-10 left-[calc(50%+40px)] right-[-40px] h-[2px] bg-gradient-to-r from-teal-300 to-teal-100 z-0" />
+                                <div className="hidden lg:block absolute top-10 left-[calc(50%+40px)] right-[-40px] h-[2px] bg-gradient-to-r from-gold-300 to-gold-100 z-0" />
                             )}
 
-                            <div className="relative z-10 bg-white rounded-2xl border border-warm-200/60 p-6 sm:p-8 text-center shadow-sm hover:shadow-lg transition-shadow duration-300 h-full">
+                            <div className="relative z-10 bg-white rounded-3xl border border-warm-200/60 p-6 sm:p-8 text-center shadow-sm hover:shadow-lg transition-shadow duration-300 h-full">
                                 {/* Step Number */}
                                 <span className="inline-block text-xs font-bold text-teal-600 bg-teal-50 px-3 py-1 rounded-full mb-4">
                                     Step {step.num}
@@ -78,7 +78,7 @@ export default function ImplementationProcess() {
                 </div>
 
                 {/* Additional Information */}
-                <div data-animate className="text-center max-w-3xl mx-auto px-4 bg-white/50 backdrop-blur-sm rounded-2xl p-8 border border-warm-200/60 shadow-sm">
+                <div data-animate className="text-center max-w-3xl mx-auto px-4 bg-white/50 backdrop-blur-sm rounded-3xl p-8 border border-warm-200/60 shadow-sm">
                     <p className="text-xl sm:text-2xl font-bold font-heading text-warm-900 mb-4">
                         No complex setup required.
                     </p>

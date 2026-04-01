@@ -22,6 +22,13 @@
             <div class="login-form">
                 <input type="text" id="loginUsername" class="login-input" placeholder="Username" autocomplete="off">
                 <input type="password" id="loginPassword" class="login-input" placeholder="Password" autocomplete="off">
+                
+                <!-- CAPTCHA UI -->
+                <div class="captcha-container" style="display: flex; gap: 10px; align-items: center; margin-bottom: 1rem; background: #f3f4f6; padding: 10px; border-radius: 8px;">
+                    <span id="captchaPrompt" style="font-weight: 600; font-size: 0.95rem; color: #374151; white-space: nowrap;">Loading...</span>
+                    <input type="text" id="captchaInput" class="login-input" style="margin-bottom: 0;" placeholder="Answer" autocomplete="off">
+                </div>
+
                 <p class="login-error" id="loginError" style="display:none;">Wrong username or password. Try again.</p>
                 <button class="login-btn" id="loginBtn">Unlock</button>
                 <div class="login-footer" style="margin-top: 1rem; text-align: center;">
@@ -143,6 +150,9 @@
                     <button class="data-tab" data-tab="items">
                         📊 Items Analytics
                     </button>
+                    <button class="data-tab" data-tab="invoices">
+                        🧾 Invoices <span class="section-count" id="invoicesCount">0</span>
+                    </button>
                 </div>
 
                 <!-- Orders Table -->
@@ -179,6 +189,26 @@
                                 </tr>
                             </thead>
                             <tbody id="itemsBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Invoices Table (Waiter-Generated) -->
+                <div class="tab-content" id="invoicesSection" style="display:none;">
+                    <div class="table-wrapper">
+                        <table class="data-table" id="invoicesTable">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date & Time</th>
+                                    <th>Invoice ID</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invoicesBody"></tbody>
                         </table>
                     </div>
                 </div>

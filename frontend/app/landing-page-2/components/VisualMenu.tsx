@@ -18,7 +18,7 @@ export default function VisualMenu() {
 
                         <h2 className="text-3xl md:text-5xl font-bold font-heading text-warm-900 mb-6 tracking-tight">
                             See Your Food{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-500">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-gold-500">
                                 Before Ordering.
                             </span>
                         </h2>
@@ -47,7 +47,7 @@ export default function VisualMenu() {
                         {[1, 2, 3, 4].map((num) => (
                             <div
                                 key={num}
-                                className="rounded-2xl overflow-hidden shadow-xl border border-warm-100 hover:-translate-y-1 transition-all duration-300 hover:shadow-2xl hover:border-teal-100"
+                                className="rounded-3xl overflow-hidden shadow-lg border border-warm-200/60 hover:-translate-y-1 transition-all duration-300 hover:shadow-xl hover:border-gold-200"
                             >
                                 <img
                                     src={`/landing/sections/visual-menu/${num}.png`}

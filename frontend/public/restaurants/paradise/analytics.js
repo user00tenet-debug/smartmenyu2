@@ -16,6 +16,17 @@ let currentRange = 'today';
 let currentData = null;
 let storedUsername = sessionStorage.getItem('menyu_admin_user') || '';
 let storedPassword = sessionStorage.getItem('menyu_admin_pass') || '';
+let currentCaptchaAnswer = 0;
+
+function generateCaptcha() {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    currentCaptchaAnswer = num1 + num2;
+    const promptEl = document.getElementById('captchaPrompt');
+    if (promptEl) promptEl.textContent = `What is ${num1} + ${num2}?`;
+    const inputEl = document.getElementById('captchaInput');
+    if (inputEl) inputEl.value = '';
+}
 
 // ==========================================
 // INITIALIZATION
@@ -38,8 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function initLogin() {
     const loginBtn = document.getElementById('loginBtn');
     const usernameInput = document.getElementById('loginUsername');
-    const passwordInput = document.getElementById('loginPassword');
+    const loginPassword = document.getElementById('loginPassword');
     const loginError = document.getElementById('loginError');
+
+    generateCaptcha();
 
     loginBtn.addEventListener('click', () => attemptLogin());
 
@@ -61,11 +74,13 @@ function initLogin() {
 async function attemptLogin() {
     const usernameInput = document.getElementById('loginUsername');
     const passwordInput = document.getElementById('loginPassword');
+    const captchaInputEl = document.getElementById('captchaInput');
     const loginError = document.getElementById('loginError');
     const loginBtn = document.getElementById('loginBtn');
     
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
+    const captchaVal = captchaInputEl ? captchaInputEl.value.trim() : '';
 
     if (!username) {
         usernameInput.focus();
@@ -73,6 +88,20 @@ async function attemptLogin() {
     }
     if (!password) {
         passwordInput.focus();
+        return;
+    }
+    if (captchaInputEl && !captchaVal) {
+        loginError.textContent = 'Please solve the math puzzle.';
+        loginError.style.display = 'block';
+        captchaInputEl.focus();
+        return;
+    }
+
+    if (captchaInputEl && parseInt(captchaVal) !== currentCaptchaAnswer) {
+        loginError.textContent = 'Incorrect math answer. Try again.';
+        loginError.style.display = 'block';
+        generateCaptcha();
+        captchaInputEl.focus();
         return;
     }
 
@@ -87,6 +116,7 @@ async function attemptLogin() {
 
         if (response.status === 401) {
             // Wrong password
+            loginError.textContent = 'Wrong username or password. Try again.';
             loginError.style.display = 'block';
             passwordInput.classList.add('shake');
             setTimeout(() => passwordInput.classList.remove('shake'), 400);
@@ -94,6 +124,7 @@ async function attemptLogin() {
             passwordInput.focus();
             loginBtn.textContent = 'Unlock';
             loginBtn.disabled = false;
+            generateCaptcha();
             return;
         }
 
@@ -545,16 +576,25 @@ function renderDashboard(data) {
         return;
     }
 
-    // Update counts on tab buttons
-    document.getElementById('ordersCount').textContent = data.orders.length + ' order' + (data.orders.length > 1 ? 's' : '');
+    // Split orders into regular and waiter invoices
+    const invoices = data.orders.filter(o => o.tableNumber === 'Waiter-Generated');
+    const regularOrders = data.orders.filter(o => o.tableNumber !== 'Waiter-Generated');
 
-    // Render orders table and items analytics
-    renderOrdersTable(data.orders);
-    renderItemsAnalytics(data.orders);
+    // Update counts on tab buttons
+    document.getElementById('ordersCount').textContent = regularOrders.length;
+    document.getElementById('invoicesCount').textContent = invoices.length;
+
+    // Render orders table, invoices table, and items analytics
+    renderOrdersTable(regularOrders);
+    renderInvoicesTable(invoices);
+    renderItemsAnalytics(regularOrders); // Only show items from regular guest orders
 
     // Show the tabs section, default to orders tab
     document.getElementById('dataTabsSection').style.display = 'block';
-    switchDataTab('orders');
+    
+    // Maintain active tab if possible, otherwise default
+    const activeTab = document.querySelector('.data-tab.active')?.dataset.tab || 'orders';
+    switchDataTab(activeTab);
 }
 
 // ==========================================
@@ -591,6 +631,48 @@ function renderOrdersTable(orders) {
                 <td class="id-cell" style="font-family: monospace; font-weight: 600; color: var(--color-text-muted);">${shortId}</td>
                 <td class="action-cell">
                     <button class="order-delete-btn" onclick="deleteOrder('${order.id}')" title="Delete order">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                            <path d="M9 6V4h6v2"></path>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+// ==========================================
+// RENDER INVOICES TABLE
+// ==========================================
+
+function renderInvoicesTable(invoices) {
+    const tbody = document.getElementById('invoicesBody');
+    tbody.innerHTML = invoices.map((o, index) => {
+        const itemsHtml = formatOrderItems(o.items);
+        const time = formatTime(o.time);
+        const status = o.paymentStatus || 'unpaid';
+        const shortId = o.id ? '#INV-' + o.id.slice(-8).toUpperCase() : '#INV-TEMP';
+
+        return `
+            <tr>
+                <td class="sno-cell">${index + 1}</td>
+                <td><div class="order-items">${itemsHtml}</div></td>
+                <td class="total-cell">₹${o.totalPrice.toLocaleString('en-IN')}</td>
+                <td class="status-cell">
+                    <select class="status-select status-${status}" data-order-id="${o.id}" onchange="updateOrderStatus(this)">
+                        <option value="paid"${status === 'paid' ? ' selected' : ''}>Paid</option>
+                        <option value="unpaid"${status === 'unpaid' ? ' selected' : ''}>Unpaid</option>
+                        <option value="ignore"${status === 'ignore' ? ' selected' : ''}>Ignore</option>
+                    </select>
+                </td>
+                <td class="time-cell">${time}</td>
+                <td class="id-cell" style="font-family: monospace; font-weight: 600; color: var(--color-text-muted);">${shortId}</td>
+                <td class="action-cell">
+                    <button class="order-delete-btn" onclick="deleteOrder('${o.id}')" title="Delete invoice">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="3 6 5 6 21 6"></polyline>
                             <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
@@ -732,6 +814,7 @@ function hideTables() {
     document.getElementById('dataTabsSection').style.display = 'none';
     document.getElementById('ordersSection').style.display = 'none';
     document.getElementById('itemsSection').style.display = 'none';
+    document.getElementById('invoicesSection').style.display = 'none';
 }
 
 // ==========================================
@@ -757,6 +840,7 @@ function switchDataTab(tabName) {
     // Toggle tab content
     document.getElementById('ordersSection').style.display = tabName === 'orders' ? 'block' : 'none';
     document.getElementById('itemsSection').style.display = tabName === 'items' ? 'block' : 'none';
+    document.getElementById('invoicesSection').style.display = tabName === 'invoices' ? 'block' : 'none';
 }
 
 // ==========================================

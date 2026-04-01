@@ -21,9 +21,9 @@ export default function Contact() {
                     {/* Phone Card */}
                     <a 
                         href="tel:+919381957903" 
-                        className="bg-alabaster rounded-2xl border border-warm-200/60 p-8 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+                        className="bg-alabaster rounded-3xl border border-warm-200/60 p-8 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
                     >
-                        <div className="w-16 h-16 mx-auto bg-gradient-to-br from-teal-600 to-teal-500 rounded-full flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <div className="w-16 h-16 mx-auto bg-gradient-to-br from-teal-600 to-gold-500 rounded-full flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
@@ -38,7 +38,7 @@ export default function Contact() {
                     {/* Email Card */}
                     <a 
                         href="mailto:smartmenyu@gmail.com" 
-                        className="bg-alabaster rounded-2xl border border-warm-200/60 p-8 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+                        className="bg-alabaster rounded-3xl border border-warm-200/60 p-8 text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
                     >
                         <div className="w-16 h-16 mx-auto bg-gradient-to-br from-gold-600 to-gold-500 rounded-full flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

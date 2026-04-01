@@ -20,7 +20,7 @@ import ScrollAnimator from './ScrollAnimator';
 
 export default function LandingPage2() {
   return (
-    <main className="min-h-screen flex flex-col bg-gray-50 font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
+    <main className="min-h-screen flex flex-col bg-alabaster font-sans selection:bg-orange-500 selection:text-white overflow-x-hidden">
       <ScrollAnimator />
       <Navbar />
 

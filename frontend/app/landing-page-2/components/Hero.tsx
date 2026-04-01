@@ -43,7 +43,7 @@ export default function Hero() {
                                 To convert your physical menu into Smart menu{" "}
                                 <a 
                                     href="#contact" 
-                                    className="text-teal-400 hover:text-teal-300 font-bold underline decoration-2 underline-offset-4 hover:decoration-teal-300 transition-all duration-300"
+                                    className="text-gold-400 hover:text-gold-300 font-bold underline decoration-2 underline-offset-4 hover:decoration-gold-300 transition-all duration-300"
                                 >
                                     contact us now
                                 </a>.

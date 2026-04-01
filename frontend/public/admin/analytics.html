@@ -24,6 +24,13 @@
             <p class="login-subtitle" style="text-align: center;">Smart Menyu Central Dashboard</p>
             <input type="text" id="loginUsername" class="login-input" placeholder="Enter Admin Username" autocomplete="off">
             <input type="password" id="loginPassword" class="login-input" placeholder="Enter Admin Password" autocomplete="off">
+            
+            <!-- CAPTCHA UI -->
+            <div class="captcha-container" style="display: flex; gap: 10px; align-items: center; margin-bottom: 1rem; background: #f3f4f6; padding: 10px; border-radius: 8px;">
+                <span id="captchaPrompt" style="font-weight: 600; font-size: 0.95rem; color: #374151; white-space: nowrap;">Loading...</span>
+                <input type="text" id="captchaInput" class="login-input" style="margin-bottom: 0;" placeholder="Answer" autocomplete="off">
+            </div>
+
             <button id="loginBtn" class="login-btn">Unlock Dashboard</button>
             <div class="login-footer" style="margin-top: 1rem; text-align: center;">
                 <a href="#" id="forgotPwLink" class="forgot-pw-link" style="color: var(--color-primary); text-decoration: none; font-size: 0.9rem; font-weight: 500;">Forgot Password?</a>
@@ -99,15 +106,15 @@
                     <div class="summary-card">
                         <div class="card-icon">📱</div>
                         <div class="card-data">
-                            <h3 id="totalScans">0</h3>
-                            <p>TOTAL SCANS</p>
+                            <h3 id="totalScans" class="card-value">0</h3>
+                            <p class="card-label">TOTAL SCANS</p>
                         </div>
                     </div>
                     <div class="summary-card highlight-card">
                         <div class="card-icon">🏢</div>
                         <div class="card-data">
-                            <h3 id="totalVenues">0</h3>
-                            <p>TOTAL VENUES</p>
+                            <h3 id="totalVenues" class="card-value">0</h3>
+                            <p class="card-label">TOTAL VENUES</p>
                         </div>
                     </div>
                 </div>
@@ -116,15 +123,15 @@
                     <div class="summary-card">
                         <div class="card-icon">🛒</div>
                         <div class="card-data">
-                            <h3 id="totalOrders">0</h3>
-                            <p>TOTAL ORDERS</p>
+                            <h3 id="totalOrders" class="card-value">0</h3>
+                            <p class="card-label">TOTAL ORDERS</p>
                         </div>
                     </div>
                     <div class="summary-card highlight-card">
                         <div class="card-icon">✅</div>
                         <div class="card-data">
-                            <h3 id="totalPayments">0</h3>
-                            <p>PAID ORDERS</p>
+                            <h3 id="totalPayments" class="card-value">0</h3>
+                            <p class="card-label">PAID ORDERS</p>
                         </div>
                     </div>
                 </div>
@@ -133,8 +140,8 @@
             <!-- Restaurant Breakdown Table -->
             <section class="data-section" id="restaurantSection" style="display:none;">
                 <div class="section-header">
-                    <h2>🏢 Venue Breakdown</h2>
-                    <span class="count-badge" id="restaurantCount">0 active</span>
+                    <h2 class="section-title">🏢 Venue Breakdown</h2>
+                    <span class="section-count" id="restaurantCount">0 active</span>
                 </div>
 
                 <div class="table-container">

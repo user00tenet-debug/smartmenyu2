@@ -10,6 +10,8 @@ const { Pool } = require("pg")
 const fs = require("fs")
 const path = require("path")
 const { decrypt } = require("./crypto-utils")
+const rateLimit = require("express-rate-limit")
+const xss = require("xss")
 
 // Connect to Supabase PostgreSQL
 const pool = new Pool({ connectionString: process.env.DATABASE_URL })
@@ -17,8 +19,55 @@ const adapter = new PrismaPg(pool)
 const prisma = new PrismaClient({ adapter })
 
 const app = express()
+app.set("trust proxy", 1) // Trust first proxy (useful if deployed behind load balancers like Render/Heroku)
 app.use(express.json())
+
+// Custom XSS Sanitizer Middleware
+const xssSanitizer = (req, res, next) => {
+    const sanitize = (data) => {
+        if (typeof data === "string") return xss(data)
+        if (Array.isArray(data)) return data.map(item => sanitize(item))
+        if (typeof data === "object" && data !== null) {
+            const sanitized = {}
+            for (const key in data) {
+                sanitized[key] = sanitize(data[key])
+            }
+            return sanitized
+        }
+        return data
+    }
+
+    if (req.body) req.body = sanitize(req.body)
+    if (req.query) {
+        // Individual keys are processed to avoid overwriting the read-only 'req.query' object itself
+        Object.keys(req.query).forEach(key => {
+            req.query[key] = sanitize(req.query[key])
+        })
+    }
+    if (req.params) {
+        Object.keys(req.params).forEach(key => {
+            req.params[key] = sanitize(req.params[key])
+        })
+    }
+    next()
+}
+
+app.use(xssSanitizer) // Sanitize inputs against XSS
 app.use(cors())
+
+// ==========================================
+// RATE LIMITING
+// ==========================================
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 300, // Limit each IP to 300 requests per windowMs (Higher limit to accommodate shared restaurant WiFi)
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { message: "Too many requests from this IP, please try again after 15 minutes" }
+})
+
+// Apply global rate limiting
+app.use(limiter)
 
 app.get("/", (req, res) => {
     res.send("Menyu backend is alive")
@@ -582,9 +631,13 @@ app.post("/api/:slug/whatsapp-redirect", (req, res) => {
             return res.status(404).json({ message: "Restaurant config not found" })
         }
 
-        // Decrypt in memory — value exists only for this request
-        const whatsappNumber = decrypt(whatsappEnc, ENCRYPTION_KEY)
+        // Decrypt in memory — value exists only for this request or return generic share link
         const encoded = encodeURIComponent(message)
+        if (req.body.isShare) {
+            return res.json({ url: `https://wa.me/?text=${encoded}` })
+        }
+
+        const whatsappNumber = decrypt(whatsappEnc, ENCRYPTION_KEY)
         const url = `https://wa.me/${whatsappNumber}?text=${encoded}`
 
         res.json({ url })
@@ -602,10 +655,6 @@ app.post("/api/:slug/upi-redirect", (req, res) => {
         const { slug } = req.params
         const { amount, name } = req.body
 
-        if (!amount || amount <= 0) {
-            return res.status(400).json({ message: "Valid amount is required" })
-        }
-
         if (!ENCRYPTION_KEY) {
             return res.status(500).json({ message: "Encryption not configured" })
         }
@@ -617,10 +666,14 @@ app.post("/api/:slug/upi-redirect", (req, res) => {
 
         // Decrypt in memory — value exists only for this request
         const upiId = decrypt(upiEnc, ENCRYPTION_KEY)
-        const url = `upi://pay?pa=${upiId}`
+        let url = `upi://pay?pa=${upiId}`
             + `&pn=${encodeURIComponent(name || slug)}`
-            + `&am=${amount}`
             + `&cu=INR`
+
+        // Only add amount if it's more than 0 (allows user to enter manually in UPI app)
+        if (amount && amount > 0) {
+            url += `&am=${amount}`
+        }
 
         res.json({ url })
     } catch (err) {

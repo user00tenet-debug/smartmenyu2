@@ -26,7 +26,7 @@ export default function Pricing() {
 
                 {/* Pricing Card */}
                 <div data-animate className="flex justify-center mb-20">
-                    <div className="w-full max-w-md bg-white rounded-3xl border-2 border-teal-200 shadow-xl overflow-hidden relative">
+                    <div className="w-full max-w-md bg-white rounded-3xl border-2 border-gold-200 shadow-xl overflow-hidden relative">
                         {/* Top accent */}
                         <div className="h-2 bg-gradient-to-r from-teal-600 via-gold-400 to-teal-600" />
 
@@ -93,7 +93,7 @@ export default function Pricing() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
                                 href="mailto:hello@menyu.in"
-                                className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-teal-600 to-teal-500 hover:from-teal-700 hover:to-teal-600 shadow-lg transition-all duration-300"
+                                className="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-teal-600 to-gold-500 hover:from-teal-700 hover:to-teal-600 shadow-lg transition-all duration-300"
                             >
                                 Get Started
                             </a>

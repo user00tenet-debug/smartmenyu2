@@ -43,7 +43,7 @@ export default function Navbar() {
                                 href={link.href}
                                 className={`text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 relative whitespace-nowrap ${scrolled
                                     ? "text-warm-800 hover:text-teal-700 hover:bg-teal-50"
-                                    : "text-white/90 hover:text-white hover:bg-white/20 backdrop-blur-sm shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                                    : "text-white/90 hover:text-white hover:bg-white/15 backdrop-blur-sm"
                                     }`}
                             >
                                 {link.label}

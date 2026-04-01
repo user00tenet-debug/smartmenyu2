@@ -16,7 +16,7 @@ export default function Ordering() {
 
                         <h2 className="text-3xl md:text-5xl font-bold font-heading text-warm-900 mb-6 tracking-tight">
                             Simple Ordering{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-500">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-gold-500">
                                 From the Table
                             </span>
                         </h2>
@@ -45,7 +45,7 @@ export default function Ordering() {
 
                     {/* Right Side — Image Placeholder */}
                     <div className="lg:w-1/2" data-animate>
-                        <div className="rounded-2xl overflow-hidden shadow-xl border border-warm-100 transition-all duration-300 hover:shadow-2xl hover:border-teal-100">
+                        <div className="rounded-3xl overflow-hidden shadow-lg border border-warm-200/60 transition-all duration-300 hover:shadow-xl hover:border-gold-200">
                             <img
                                 src={`/landing/sections/ordering/1.png`}
                                 alt={`Ordering`}

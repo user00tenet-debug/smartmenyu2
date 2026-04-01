@@ -177,7 +177,7 @@ export default function LegalSections() {
                     {legalData.map((item, index) => (
                         <div 
                             key={index}
-                            className="border border-warm-200/60 rounded-2xl overflow-hidden bg-alabaster/50 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
+                            className="border border-warm-200/60 rounded-3xl overflow-hidden bg-alabaster/50 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
                         >
                             <button
                                 onClick={() => toggleAccordion(index)}
@@ -189,7 +189,7 @@ export default function LegalSections() {
                                 <motion.div
                                     animate={{ rotate: activeIndex === index ? 180 : 0 }}
                                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    className={`text-xl ${activeIndex === index ? 'text-teal-700' : 'text-warm-400 group-hover:text-teal-500'}`}
+                                    className={`text-xl ${activeIndex === index ? 'text-teal-700' : 'text-warm-400 group-hover:text-gold-500'}`}
                                 >
                                     <FiChevronDown />
                                 </motion.div>

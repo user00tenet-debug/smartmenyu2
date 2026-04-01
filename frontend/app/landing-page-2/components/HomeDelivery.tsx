@@ -17,7 +17,7 @@ export default function HomeDelivery() {
 
                         <h2 className="text-3xl md:text-5xl font-bold font-heading text-warm-900 mb-6 tracking-tight">
                             Accept Orders From Home{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-500">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-gold-500">
                                 Without Delivery Apps
                             </span>
                         </h2>
@@ -43,7 +43,7 @@ export default function HomeDelivery() {
 
                     {/* Right Side — Image Placeholder */}
                     <div className="lg:w-1/2" data-animate>
-                        <div className="rounded-2xl overflow-hidden shadow-xl border border-warm-100 transition-all duration-300 hover:shadow-2xl hover:border-teal-100">
+                        <div className="rounded-3xl overflow-hidden shadow-lg border border-warm-200/60 transition-all duration-300 hover:shadow-xl hover:border-gold-200">
                             <img
                                 src={`/landing/sections/home-delivery/1.png`}
                                 alt={`Home Delivery`}
@@ -54,7 +54,7 @@ export default function HomeDelivery() {
                 </div>
 
                 {/* Additional Information */}
-                <div data-animate className="mt-16 text-center max-w-3xl mx-auto px-4 bg-white/50 backdrop-blur-sm rounded-2xl p-8 border border-warm-200/60 shadow-sm">
+                <div data-animate className="mt-16 text-center max-w-3xl mx-auto px-4 bg-white/50 backdrop-blur-sm rounded-3xl p-8 border border-warm-200/60 shadow-sm">
                     <p className="text-xl sm:text-2xl font-bold font-heading text-warm-900 mb-4">
                         Run the entire system from your mobile phone.
                     </p>

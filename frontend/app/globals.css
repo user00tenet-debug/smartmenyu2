@@ -4,32 +4,32 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-heading: var(--font-roboto), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  --color-alabaster: #FAFAFA;
-  --color-softblack: #171717;
-  --color-mutedgray: #525252;
-  --color-teal-50: #f0fdfa;
-  --color-teal-100: #ccfbf1;
-  --color-teal-600: #0d9488;
-  --color-teal-700: #0f766e;
-  --color-teal-800: #115e59;
-  --color-teal-900: #134e4a;
+  --color-alabaster: #EEF2F6;
+  --color-softblack: #1A1D23;
+  --color-mutedgray: #5F6B7A;
+  --color-teal-50: #FFF7ED;
+  --color-teal-100: #FFEDD5;
+  --color-teal-600: #EA580C;
+  --color-teal-700: #C2410C;
+  --color-teal-800: #9A3412;
+  --color-teal-900: #7C2D12;
 
-  /* Restaurant gold accent palette */
-  --color-gold-50: #FFFBEB;
-  --color-gold-100: #FEF3C7;
-  --color-gold-200: #FDE68A;
-  --color-gold-300: #FCD34D;
-  --color-gold-400: #FBBF24;
-  --color-gold-500: #F59E0B;
-  --color-gold-600: #D97706;
-  --color-gold-700: #B45309;
+  /* Accent amber palette (replaces gold) */
+  --color-gold-50: #FFF7ED;
+  --color-gold-100: #FFEDD5;
+  --color-gold-200: #FED7AA;
+  --color-gold-300: #FDBA74;
+  --color-gold-400: #FB923C;
+  --color-gold-500: #F97316;
+  --color-gold-600: #EA580C;
+  --color-gold-700: #C2410C;
 
-  /* Warm stone palette */
-  --color-warm-50: #FAFAF9;
-  --color-warm-100: #F5F5F4;
-  --color-warm-200: #E7E5E4;
-  --color-warm-800: #292524;
-  --color-warm-900: #1C1917;
+  /* Warm neutral palette */
+  --color-warm-50: #F8FAFC;
+  --color-warm-100: #F1F5F9;
+  --color-warm-200: #E2E8F0;
+  --color-warm-800: #1E293B;
+  --color-warm-900: #0F172A;
 }
 
 body {
@@ -84,7 +84,7 @@ h6 {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Shimmer effect for luxury elements */
+/* Shimmer effect for accent elements */
 @keyframes shimmer {
   0% {
     background-position: -200% center;
@@ -96,7 +96,7 @@ h6 {
 }
 
 .text-shimmer {
-  background: linear-gradient(90deg, #D97706, #FBBF24, #D97706, #FBBF24);
+  background: linear-gradient(90deg, #EA580C, #F97316, #FB923C, #F97316);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -109,11 +109,11 @@ h6 {
 
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.4);
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
   }
 
   50% {
-    box-shadow: 0 0 20px 6px rgba(15, 118, 110, 0.15);
+    box-shadow: 0 0 20px 6px rgba(249, 115, 22, 0.15);
   }
 }
 
@@ -155,7 +155,7 @@ h6 {
   content: "";
   height: 1px;
   width: 60px;
-  background: linear-gradient(to right, transparent, #D97706, transparent);
+  background: linear-gradient(to right, transparent, #F97316, transparent);
 }
 
 /* Scroll-triggered animation helper */
@@ -200,7 +200,7 @@ h6 {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #0f766e, #FBBF24, #0f766e);
+  background: linear-gradient(90deg, #F97316, #FB923C, #F97316);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -354,7 +354,7 @@ button {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #FBBF24, #D97706, #FBBF24, transparent);
+  background: linear-gradient(90deg, transparent, #FB923C, #F97316, #FB923C, transparent);
   background-size: 200% 100%;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -379,9 +379,9 @@ button {
   height: 6px;
   background: linear-gradient(90deg,
       transparent 0%,
-      rgba(217, 119, 6, 0.3) 25%,
-      rgba(15, 118, 110, 0.3) 50%,
-      rgba(217, 119, 6, 0.3) 75%,
+      rgba(249, 115, 22, 0.3) 25%,
+      rgba(249, 115, 22, 0.15) 50%,
+      rgba(249, 115, 22, 0.3) 75%,
       transparent 100%);
 }
 

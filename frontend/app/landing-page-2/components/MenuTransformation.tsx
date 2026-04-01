@@ -35,7 +35,7 @@ export default function MenuTransformation() {
                     </p>
                     <h2 className="text-3xl md:text-5xl font-bold font-heading text-warm-900 mb-6 tracking-tight">
                         Turn Your Physical Menu Into a{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-500">
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-gold-500">
                             Smart Digital Menu
                         </span>
                     </h2>
@@ -47,18 +47,18 @@ export default function MenuTransformation() {
                 {/* Cards */}
                 <div className="relative" data-animate>
                     {/* Connecting arrow line for Desktop */}
-                    <div className="hidden lg:block absolute top-1/2 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-teal-200 via-teal-400 to-teal-200 -translate-y-1/2 z-0" />
+                    <div className="hidden lg:block absolute top-1/2 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-gold-200 via-gold-400 to-gold-200 -translate-y-1/2 z-0" />
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                         {stages.map((stage, i) => (
                             <div key={stage.title} className="flex flex-col items-center group">
                                 {/* Step number */}
-                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-teal-500 text-white font-bold flex items-center justify-center text-sm mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 z-10">
+                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-gold-500 text-white font-bold flex items-center justify-center text-sm mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 z-10">
                                     {i + 1}
                                 </div>
 
                                 {/* Card */}
-                                <div className="bg-white rounded-2xl overflow-hidden shadow-xl border border-warm-100 w-full hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:border-teal-100">
+                                <div className="bg-white rounded-3xl overflow-hidden shadow-lg border border-warm-200/60 w-full hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:border-gold-200">
                                     {/* Image */}
                                     <div className="w-full h-52 overflow-hidden">
                                         <img

@@ -14,6 +14,17 @@ let currentRange = 'today';
 let currentData = null;
 let storedUsername = sessionStorage.getItem('menyu_admin_user') || '';
 let storedPassword = sessionStorage.getItem('menyu_admin_pass') || '';
+let currentCaptchaAnswer = 0;
+
+function generateCaptcha() {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    currentCaptchaAnswer = num1 + num2;
+    const promptEl = document.getElementById('captchaPrompt');
+    if (promptEl) promptEl.textContent = `What is ${num1} + ${num2}?`;
+    const inputEl = document.getElementById('captchaInput');
+    if (inputEl) inputEl.value = '';
+}
 
 // ==========================================
 // INITIALIZATION
@@ -37,7 +48,10 @@ function initLogin() {
     const loginBtn = document.getElementById('loginBtn');
     const usernameInput = document.getElementById('loginUsername');
     const passwordInput = document.getElementById('loginPassword');
+    const captchaInput = document.getElementById('captchaInput');
     const loginError = document.getElementById('loginError');
+
+    generateCaptcha();
 
     loginBtn.addEventListener('click', () => attemptLogin());
 
@@ -59,11 +73,13 @@ function initLogin() {
 async function attemptLogin() {
     const usernameInput = document.getElementById('loginUsername');
     const passwordInput = document.getElementById('loginPassword');
+    const captchaInputEl = document.getElementById('captchaInput');
     const loginError = document.getElementById('loginError');
     const loginBtn = document.getElementById('loginBtn');
     
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
+    const captchaVal = captchaInputEl ? captchaInputEl.value.trim() : '';
 
     if (!username) {
         usernameInput.focus();
@@ -71,6 +87,20 @@ async function attemptLogin() {
     }
     if (!password) {
         passwordInput.focus();
+        return;
+    }
+    if (captchaInputEl && !captchaVal) {
+        loginError.textContent = 'Please solve the math puzzle.';
+        loginError.style.display = 'block';
+        captchaInputEl.focus();
+        return;
+    }
+
+    if (captchaInputEl && parseInt(captchaVal) !== currentCaptchaAnswer) {
+        loginError.textContent = 'Incorrect math answer. Try again.';
+        loginError.style.display = 'block';
+        generateCaptcha();
+        captchaInputEl.focus();
         return;
     }
 
@@ -85,6 +115,7 @@ async function attemptLogin() {
 
         if (response.status === 401) {
             // Wrong password
+            loginError.textContent = 'Incorrect username or password.';
             loginError.style.display = 'block';
             passwordInput.classList.add('shake');
             setTimeout(() => passwordInput.classList.remove('shake'), 400);
@@ -92,6 +123,7 @@ async function attemptLogin() {
             passwordInput.focus();
             loginBtn.textContent = 'Unlock Dashboard';
             loginBtn.disabled = false;
+            generateCaptcha();
             return;
         }
 

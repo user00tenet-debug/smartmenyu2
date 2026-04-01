@@ -15,7 +15,7 @@ const services = [
         title: "Ordering",
         desc: "Customers select items and send orders directly to the kitchen via WhatsApp.",
         color: "from-teal-50 to-teal-100/40",
-        border: "border-teal-200",
+        border: "border-gold-200",
     },
     {
         icon: "💳",
@@ -36,7 +36,7 @@ const services = [
         title: "Analytics",
         desc: "Insights into most ordered dishes, peak times, and customer behavior.",
         color: "from-teal-50 to-teal-100/40",
-        border: "border-teal-200",
+        border: "border-gold-200",
     },
     {
         icon: "🔔",
@@ -83,7 +83,7 @@ export default function ServicesCarousel() {
                         {[...services, ...services].map((service, index) => (
                             <div
                                 key={`${service.title}-${index}`}
-                                className={`shrink-0 w-[280px] sm:w-[300px] rounded-2xl bg-gradient-to-br ${service.color} border ${service.border} p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group cursor-pointer`}
+                                className={`shrink-0 w-[280px] sm:w-[300px] rounded-3xl bg-gradient-to-br ${service.color} border ${service.border} p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group cursor-pointer`}
                             >
                                 <span className="text-4xl block mb-4 group-hover:scale-110 transition-transform duration-300">
                                     {service.icon}

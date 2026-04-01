@@ -342,13 +342,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resp = await fetch(`${restaurantConfig.apiBaseUrl}/api/${restaurantConfig.slug}/upi-redirect`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ amount: total, name: restaurantConfig.name })
+                    body: JSON.stringify({ amount: 0, name: restaurantConfig.name })
                 });
                 const data = await resp.json();
                 if (data.url) window.location.href = data.url;
             } catch (err) {
                 console.error('UPI redirect failed:', err);
                 alert('Could not open UPI app. Please try again.');
+            }
+        });
+    }
+
+    // Get Invoice button — send WhatsApp message requesting invoice
+    const invoiceBtn = document.getElementById('cartInvoiceBtn');
+    if (invoiceBtn) {
+        invoiceBtn.addEventListener('click', async () => {
+            const message = 'Please send our invoice now.';
+
+            try {
+                const resp = await fetch(`${restaurantConfig.apiBaseUrl}/api/${restaurantConfig.slug}/whatsapp-redirect`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const data = await resp.json();
+                if (data.url) window.location.href = data.url;
+            } catch (err) {
+                console.error('WhatsApp redirect failed:', err);
+                alert('Could not open WhatsApp. Please try again.');
             }
         });
     }
