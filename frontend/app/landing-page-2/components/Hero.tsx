@@ -33,8 +33,9 @@ export default function Hero() {
 
                         <p className="text-base sm:text-xl text-warm-200 lg:mx-0 leading-relaxed mt-6">
                             Customers scan a QR code, explore a rich visual menu with images
-                            and videos, place orders instantly, pay using UPI, and even place
-                            home delivery orders through WhatsApp — all from their phone.
+                            and videos, place orders instantly, get e-invoice on whatsapp, pay 
+                            using UPI, and even place home delivery orders through WhatsApp 
+                            — all from their phone.
                         </p>
 
                         {/* CTA Buttons */}

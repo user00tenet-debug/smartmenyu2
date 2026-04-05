@@ -11,6 +11,7 @@ import HowItWorks from './landing-page-2/components/HowItWorks';
 import MenuTransformation from './landing-page-2/components/MenuTransformation';
 import VisualMenu from './landing-page-2/components/VisualMenu';
 import Ordering from './landing-page-2/components/Ordering';
+import EInvoice from './landing-page-2/components/EInvoice';
 import Payment from './landing-page-2/components/Payment';
 import HomeDelivery from './landing-page-2/components/HomeDelivery';
 import Contact from './landing-page-2/components/Contact';
@@ -30,6 +31,7 @@ export default function LandingPage2() {
         <MenuTransformation />
         <VisualMenu />
         <Ordering />
+        <EInvoice />
         <Payment />
         <HomeDelivery />
         <ImplementationProcess />
