@@ -10,7 +10,7 @@ export default function HowItWorks() {
                         Seamless Process
                     </p>
                     <h2 className="text-3xl md:text-5xl font-bold font-heading text-warm-900 mb-6 tracking-tight">
-                        How <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-500">MENYU</span> Works
+                        How <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-500">Smart Menyu</span> Works
                     </h2>
                     <p className="text-lg text-warm-200/80 max-w-2xl mx-auto text-mutedgray">
                         From traditional paper to a fully digital ordering experience in five simple steps.

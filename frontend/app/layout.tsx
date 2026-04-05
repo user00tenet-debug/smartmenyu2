@@ -14,7 +14,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "MENYU | The Operating System for Modern Indian Restaurants",
+  title: "Smart Menyu | The Operating System for Modern Indian Restaurants",
   description: "Stop giving away 30% to delivery apps. The smart, simple QR menu for modern Indian restaurants.",
 };
 

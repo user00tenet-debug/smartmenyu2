@@ -10,16 +10,16 @@ const legalData = [
         content: (
             <div className="space-y-4 text-sm text-mutedgray leading-relaxed">
                 <p><strong>Last Updated:</strong> March 17, 2026</p>
-                <p>Welcome to <strong>Menyu</strong> (the "Service"). By accessing or using our platform, you agree to comply with and be bound by the following terms and conditions.</p>
+                <p>Welcome to <strong>Smart Menyu</strong> (the "Service"). By accessing or using our platform, you agree to comply with and be bound by the following terms and conditions.</p>
                 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">1. Acceptance of Terms</h4>
-                    <p>By scanning a Menyu QR code or accessing our website, you (the "User") agree to these Terms and Conditions. If you do not agree, please do not use the Service.</p>
+                    <p>By scanning a Smart Menyu QR code or accessing our website, you (the "User") agree to these Terms and Conditions. If you do not agree, please do not use the Service.</p>
                 </div>
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">2. Service Description</h4>
-                    <p>Menyu provides a digital menu platform that facilitates:</p>
+                    <p>Smart Menyu provides a digital menu platform that facilitates:</p>
                     <ul className="list-disc pl-5 mt-1 space-y-1">
                         <li>Viewing restaurant menus.</li>
                         <li>Adding items to a virtual cart.</li>
@@ -32,24 +32,24 @@ const legalData = [
                     <h4 className="font-bold text-warm-900 mb-1">3. User Responsibilities</h4>
                     <ul className="list-disc pl-5 mt-1 space-y-1">
                         <li><strong>Accuracy of Orders:</strong> You are responsible for ensuring the items and quantities in your cart are correct before submitting an order.</li>
-                        <li><strong>Payment:</strong> Menyu facilitates the initiation of a payment via UPI. You are responsible for completing the transaction within your chosen UPI application.</li>
+                        <li><strong>Payment:</strong> Smart Menyu facilitates the initiation of a payment via UPI. You are responsible for completing the transaction within your chosen UPI application.</li>
                         <li><strong>Lawful Use:</strong> You agree not to use the Service for any fraudulent or malicious activity, including spamming API endpoints or attempting to bypass security features.</li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">4. Accuracy of Information</h4>
-                    <p>Menu items, prices, ingredients, and nutritional information are provided by the restaurants. Menyu does not guarantee the accuracy, completeness, or timeliness of this information.</p>
+                    <p>Menu items, prices, ingredients, and nutritional information are provided by the restaurants. Smart Menyu does not guarantee the accuracy, completeness, or timeliness of this information.</p>
                 </div>
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">5. Restaurant Interaction & Orders</h4>
-                    <p>Menyu is a technology platform and does not own, operate, or manage any listed restaurant. Menyu does not process, prepare, or deliver food. All orders are handled directly between the customer and the restaurant. Any disputes regarding food quality, incorrect orders, or service should be directed to the Restaurant management.</p>
+                    <p>Smart Menyu is a technology platform and does not own, operate, or manage any listed restaurant. Smart Menyu does not process, prepare, or deliver food. All orders are handled directly between the customer and the restaurant. Any disputes regarding food quality, incorrect orders, or service should be directed to the Restaurant management.</p>
                 </div>
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">6. Intellectual Property</h4>
-                    <p>All content, design, software, and underlying code associated with the Service are the property of Menyu or its licensors and are protected by applicable intellectual property laws. You may not copy, modify, or distribute any part of the Service without prior written consent.</p>
+                    <p>All content, design, software, and underlying code associated with the Service are the property of Smart Menyu or its licensors and are protected by applicable intellectual property laws. You may not copy, modify, or distribute any part of the Service without prior written consent.</p>
                 </div>
 
                 <div>
@@ -59,7 +59,7 @@ const legalData = [
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">8. Limitation of Liability</h4>
-                    <p>To the maximum extent permitted by law, Menyu shall not be liable for any damages (direct or indirect) arising from the use of the platform, including but not limited to:</p>
+                    <p>To the maximum extent permitted by law, Smart Menyu shall not be liable for any damages (direct or indirect) arising from the use of the platform, including but not limited to:</p>
                     <ul className="list-disc pl-5 mt-1 space-y-1">
                         <li>Incorrect orders or delivery delays.</li>
                         <li>Food quality, safety, or hygiene issues.</li>
@@ -74,7 +74,7 @@ const legalData = [
         content: (
             <div className="space-y-4 text-sm text-mutedgray leading-relaxed">
                 <p><strong>Last Updated:</strong> March 17, 2026</p>
-                <p>Your privacy is important to us. This policy explains how Menyu collects, uses, and protects your information.</p>
+                <p>Your privacy is important to us. This policy explains how Smart Menyu collects, uses, and protects your information.</p>
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">1. Information We Collect</h4>
@@ -96,7 +96,7 @@ const legalData = [
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">3. Third-Party Services</h4>
-                    <p>Payments and messaging (WhatsApp, UPI apps) are handled by third-party platforms. Menyu does not control their data practices or privacy policies. We are not responsible for how these third parties handle your information.</p>
+                    <p>Payments and messaging (WhatsApp, UPI apps) are handled by third-party platforms. Smart Menyu does not control their data practices or privacy policies. We are not responsible for how these third parties handle your information.</p>
                 </div>
 
                 <div>
@@ -122,12 +122,12 @@ const legalData = [
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">1. No Responsibility for Payments</h4>
-                    <p>Menyu provides a redirect to your preferred UPI application. We <strong>do not</strong> process payments directly and <strong>do not</strong> have access to your bank details or transaction status. Any issues regarding payment failure, disputes, or refunds must be resolved directly between the User, the Restaurant, and the respective Bank/UPI Provider.</p>
+                    <p>Smart Menyu provides a redirect to your preferred UPI application. We <strong>do not</strong> process payments directly and <strong>do not</strong> have access to your bank details or transaction status. Any issues regarding payment failure, disputes, or refunds must be resolved directly between the User, the Restaurant, and the respective Bank/UPI Provider.</p>
                 </div>
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">2. No Responsibility for Food, Quality & Safety</h4>
-                    <p>Menyu does not guarantee the quality, safety, or hygiene of food served by restaurants. All food preparation and service are the sole responsibility of the Restaurant.</p>
+                    <p>Smart Menyu does not guarantee the quality, safety, or hygiene of food served by restaurants. All food preparation and service are the sole responsibility of the Restaurant.</p>
                 </div>
 
                 <div>
@@ -137,7 +137,7 @@ const legalData = [
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">4. Allergies & Dietary Restrictions</h4>
-                    <p>Customers must inform the restaurant directly about any allergies or dietary restrictions before placing an order. Menyu is not liable for any health issues arising from dietary inaccuracies.</p>
+                    <p>Customers must inform the restaurant directly about any allergies or dietary restrictions before placing an order. Smart Menyu is not liable for any health issues arising from dietary inaccuracies.</p>
                 </div>
 
                 <div>
@@ -147,7 +147,7 @@ const legalData = [
 
                 <div>
                     <h4 className="font-bold text-warm-900 mb-1">6. "As-Is" Basis</h4>
-                    <p>The Service is provided on an "as-is" and "as-available" basis. By using this platform, you agree that Menyu is not liable for any direct or indirect damages arising from the use of the service.</p>
+                    <p>The Service is provided on an "as-is" and "as-available" basis. By using this platform, you agree that Smart Menyu is not liable for any direct or indirect damages arising from the use of the service.</p>
                 </div>
             </div>
         )

@@ -87,7 +87,7 @@ export default function Pricing() {
                             <span className="text-shimmer">The Digital Era</span>
                         </h2>
                         <p className="text-warm-200 max-w-xl mx-auto mb-8">
-                            Join restaurants using Menyu to serve customers faster, reduce
+                            Join restaurants using Smart Menyu to serve customers faster, reduce
                             costs, and increase revenue.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">

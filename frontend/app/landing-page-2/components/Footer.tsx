@@ -13,7 +13,7 @@ export default function Footer() {
                     {/* Logo & Tagline */}
                     <div>
                         <span className="text-2xl font-bold font-heading text-warm-900 tracking-tight">
-                            MENYU
+                            Smart Menyu
                         </span>
                         <p className="mt-3 text-sm text-mutedgray leading-relaxed max-w-xs">
                             The smart QR menu platform for modern Indian restaurants. Scan,
@@ -57,7 +57,7 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="mt-12 pt-8 border-t border-warm-200/60 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-xs text-mutedgray/70">
-                        © 2026 Menyu. All rights reserved.
+                        © 2026 Smart Menyu. All rights reserved.
                     </p>
                     <p className="text-xs text-mutedgray/70">
                         Made with ❤️ for Indian restaurants

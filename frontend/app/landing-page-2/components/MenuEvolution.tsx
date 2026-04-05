@@ -77,7 +77,7 @@ export default function MenuEvolution() {
                             >
                                 {stage.badge && (
                                     <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white px-3 py-1 rounded-full">
-                                        Menyu
+                                        Smart Menyu
                                     </span>
                                 )}
 

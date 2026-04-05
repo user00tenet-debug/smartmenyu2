@@ -70,7 +70,7 @@ export default function Benefits() {
                     </p>
                     <h2 className="text-3xl sm:text-4xl font-bold font-heading text-warm-900">
                         Why Restaurants Love{" "}
-                        <span className="text-shimmer">Menyu</span>
+                        <span className="text-shimmer">Smart Menyu</span>
                     </h2>
                 </div>
 

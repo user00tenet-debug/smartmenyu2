@@ -31,7 +31,7 @@ export default function Navbar() {
                     {/* Logo */}
                     <a href="#" className="flex items-center gap-2 group md:flex-1">
                         <span className="text-2xl font-bold font-heading tracking-tight">
-                            <span className="text-shimmer">MENYU</span>
+                            <span className="text-shimmer">Smart Menyu</span>
                         </span>
                     </a>
 
